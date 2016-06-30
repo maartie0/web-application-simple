@@ -4,9 +4,7 @@ import com.mahe.sample.Driver;
 import com.mahe.sample.ServletLogIn;
 import com.mahe.sample.ServletSignUp;
 import junit.framework.TestCase;
-import org.easymock.EasyMockSupport;
 import org.junit.Before;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -37,14 +35,16 @@ public class ServletTest extends TestCase{
     }
 
     public void testUserIsAdded() throws ServletException, IOException {
-        request.addParameter("userName-SignUp", "scott");
-        request.addParameter("psw-SignUp", "tiger");
-        request.addParameter("psw-SignUp-verification", "tiger");
+        String username = "scotty";
+        String password = "doesnt know";
+        request.addParameter("userName-SignUp", username);
+        request.addParameter("psw-SignUp", password);
+        request.addParameter("psw-SignUp-verification", password);
         request.addParameter("radio", "agreed");
         servletSignUp.doPost(request, response);
-        boolean profileFound = Driver.getInstance().findProfile("scott","tiger");
+        boolean profileFound = Driver.getInstance().findProfile(username,password);
         assertTrue(profileFound);
-        Driver.getInstance().deleteProfile("scott","tiger");
+        Driver.getInstance().deleteProfile(username,password);
         setUp();
     }
 
@@ -57,6 +57,7 @@ public class ServletTest extends TestCase{
         servletLogIn.doPost(request,response);
         assertTrue((boolean)request.getAttribute("login_success"));
         Driver.getInstance().deleteProfile(username,password);
+        setUp();
     }
 
 

@@ -16,9 +16,4 @@ public class ServletRedirectToSignUp extends HttpServlet {
         response.setContentType("text/html");
         request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
     }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Set response content type
-
-    }
 }

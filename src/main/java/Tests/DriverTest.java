@@ -1,6 +1,7 @@
 package Tests;
 
 import com.mahe.sample.Driver;
+import com.mahe.sample.ServletRedirectToSignUp;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -14,19 +15,23 @@ public class DriverTest extends TestCase {
 
 
     public void testNoDoubleUsers() throws ServletException, IOException {
+        String username = "tim";
+        String password = "eel";
         Driver driver = Driver.getInstance();
-        driver.deleteProfile("tim","lion");
-        boolean firstUser = driver.setProfile("tim","lion");
-        boolean secondUser = driver.setProfile("tim","lion");
+        driver.deleteProfile(username,password);
+        boolean firstUser = driver.setProfile(username,password);
+        boolean secondUser = driver.setProfile(username,password);
         assertTrue(firstUser);
         assertFalse(secondUser);
-        driver.deleteProfile("tim","lion");
+        driver.deleteProfile(username,password);
     }
 
     public void testDelete(){
+        String username = "pete";
+        String password = "platypus";
         Driver driver = Driver.getInstance();
-        boolean added = driver.setProfile("adam","platypus");
-        boolean deleted = driver.deleteProfile("adam","platypus");
+        boolean added = driver.setProfile(username,password);
+        boolean deleted = driver.deleteProfile(username,password);
         assertTrue(added);
         assertTrue(deleted);
     }

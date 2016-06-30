@@ -18,7 +18,6 @@ public class Driver {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_login","root","Wunstorf1!");
-
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             _instance = null;
@@ -45,8 +44,6 @@ public class Driver {
             }
         } catch (SQLException e){
             e.printStackTrace();
-            //print that login was unsuccessfull to screen
-            System.out.println("login unsuccessfull");
             return "";
         }
     }
@@ -56,6 +53,7 @@ public class Driver {
             Statement myStatement = myConn.createStatement();
             if(!findProfile(username,password)){
                 myStatement.executeUpdate("INSERT INTO database_login.login_details  (username,password) VALUES ('" + username + "','" + password + "');");
+                return true;
             }else{
                 return false;
             }
@@ -63,35 +61,32 @@ public class Driver {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
 
     public boolean deleteProfile(String username,String password){
-
         try {
             Statement myStatement = myConn.createStatement();
             myStatement.executeUpdate("DELETE FROM database_login.login_details WHERE username ='" + username + "';");
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
 
     public boolean findProfile(String username,String password){
         try {
             Statement myStatement = myConn.createStatement();
             ResultSet myRs = myStatement.executeQuery("SELECT username,password FROM database_login.login_details WHERE username = '" + username + "';");
-            if(myRs.next()){
-                if(myRs.getString("username").equals(username) && myRs.getString("password").equals(password)){
-                    return true;
-                }
+            if(myRs.next() && myRs.getString("username").equals(username) && myRs.getString("password").equals(password)){
+                return true;
+            }else{
+                return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-        return false;
     }
 
 }
