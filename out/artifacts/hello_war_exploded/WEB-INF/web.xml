@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>ServletLogIn</servlet-name>
+        <servlet-class>com.mahe.sample.ServletLogIn</servlet-class>
+    </servlet>
+    <servlet>
+    <servlet-name>ServletSignUp</servlet-name>
+    <servlet-class>com.mahe.sample.ServletSignUp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletRedirectToSignUp</servlet-name>
+        <servlet-class>com.mahe.sample.ServletRedirectToSignUp</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletLogIn</servlet-name>
+        <url-pattern>/LogIn</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSignUp</servlet-name>
+        <url-pattern>/SignUp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletRedirectToSignUp</servlet-name>
+        <url-pattern>/redirect/SignUp</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,7 @@
+body {
+    background-color: darkblue;
+}
+
+input[id="login"] {
+    margin-left: 60px;
+}
