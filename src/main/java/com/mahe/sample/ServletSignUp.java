@@ -13,8 +13,8 @@ import java.io.PrintWriter;
  */
 @WebServlet(name = "ServletSignUp")
 public class ServletSignUp extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String userName = request.getParameter("userName-SignUp");
         String password = request.getParameter("psw-SignUp");

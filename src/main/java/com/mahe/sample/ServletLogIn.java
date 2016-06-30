@@ -25,18 +25,20 @@ public class ServletLogIn extends javax.servlet.http.HttpServlet {
         out.flush();
     }
 
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    public void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         Driver driver = Driver.getInstance();
 
-        response.setContentType("text/html");
+  //      response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String userName = request.getParameter("userName");
         String password = request.getParameter("psw");
         if(password.equals(driver.getPassword(userName)) && !userName.equals("") && !password.equals("")){
             System.out.println("login succesfull");
+            request.setAttribute("login_success",true);
             request.getRequestDispatcher("/Home.jsp").forward(request, response);
         }else{
             System.out.println("login unsuccessfull");
+            request.setAttribute("login_success",false);
             request.getRequestDispatcher("/LogIn.jsp").forward(request, response);
         }
 

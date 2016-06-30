@@ -54,12 +54,44 @@ public class Driver {
     public boolean setProfile(String username,String password){
         try{
             Statement myStatement = myConn.createStatement();
-            myStatement.executeUpdate("INSERT INTO database_login.login_details  (username,password) VALUES ('" + username + "','" + password + "');");
+            if(!findProfile(username,password)){
+                myStatement.executeUpdate("INSERT INTO database_login.login_details  (username,password) VALUES ('" + username + "','" + password + "');");
+            }else{
+                return false;
+            }
         }catch (SQLException e){
             e.printStackTrace();
             return false;
         }
         return true;
+    }
+
+    public boolean deleteProfile(String username,String password){
+
+        try {
+            Statement myStatement = myConn.createStatement();
+            myStatement.executeUpdate("DELETE FROM database_login.login_details WHERE username ='" + username + "';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean findProfile(String username,String password){
+        try {
+            Statement myStatement = myConn.createStatement();
+            ResultSet myRs = myStatement.executeQuery("SELECT username,password FROM database_login.login_details WHERE username = '" + username + "';");
+            if(myRs.next()){
+                if(myRs.getString("username").equals(username) && myRs.getString("password").equals(password)){
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
     }
 
 }
