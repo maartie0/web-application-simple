@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
+    <%--<link rel="stylesheet" type="text/css" href="Style.css">--%>
 </head>
 <body>
-    <video width="900" controls style="margin-left: 275px;margin-top: 150px">
+    <video width="900" controls >
         <source src="resources/servlet_bunny.mp4" type="video/mp4">
         <source src="resources/servlet_bunny.ogg" type="video/ogg">
         Your browser does not support HTML5 video.

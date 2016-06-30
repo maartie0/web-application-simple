@@ -9,14 +9,14 @@
 <html>
 <head>
     <title>signup</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
+    <%--<link rel="stylesheet" type="text/css" href="Style.css">--%>
 </head>
 <body>
 <h3 style="margin-left: 620px">
     Sign Up
 </h3>
 <form method= "post" action="/SignUp">
-    <div name="signup" style="margin-top: 200px">
+    <div name="signup" >
         User name:
         <input name="userName-SignUp"><br>
         Password:

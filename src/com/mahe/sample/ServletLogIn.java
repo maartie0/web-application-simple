@@ -32,7 +32,7 @@ public class ServletLogIn extends javax.servlet.http.HttpServlet {
         PrintWriter out = response.getWriter();
         String userName = request.getParameter("userName");
         String password = request.getParameter("psw");
-        if(password.equals(driver.getPassword(userName)) && userName != null){ //todo verify user name and password
+        if(password.equals(driver.getPassword(userName)) && !userName.equals("") && !password.equals("")){
             System.out.println("login succesfull");
             request.getRequestDispatcher("/Home.jsp").forward(request, response);
         }else{
@@ -41,6 +41,7 @@ public class ServletLogIn extends javax.servlet.http.HttpServlet {
         }
 
         out.flush();
-
     }
+
+
 }

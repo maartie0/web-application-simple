@@ -15,15 +15,12 @@ import java.io.PrintWriter;
 public class ServletSignUp extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        System.out.println("signup post method");
         PrintWriter out = response.getWriter();
         String userName = request.getParameter("userName-SignUp");
         String password = request.getParameter("psw-SignUp");
         String password_verification = request.getParameter("psw-SignUp-verification");
         String radio = request.getParameter("radio");
-        if("agreed".equals(radio) && userName != null && password != null && password.equals(password_verification)){
-            System.out.println("go ahead with registration");
-            //todo store in SQL
+        if("agreed".equals(radio) && password.equals(password_verification) && !userName.equals("") && !password.equals("") ){
             Driver driver = Driver.getInstance();
             if(driver.setProfile(userName,password)){
                 request.getRequestDispatcher("/LogIn.jsp").forward(request, response);
