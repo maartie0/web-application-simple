@@ -22,23 +22,31 @@ public class ServletSignUp extends HttpServlet {
 //        response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String userName = request.getParameter("userName-SignUp");
-        String password = request.getParameter("psw-SignUp");
-        String password_verification = request.getParameter("psw-SignUp-verification");
+        String password = request.getParameter("password-SignUp");
+        String password_verification = request.getParameter("password-SignUp-verification");
         String radio = request.getParameter("radio");
-        if("agreed".equals(radio) && password.equals(password_verification) && !userName.equals("") && !password.equals("") ){
-            Driver driver = Driver.getInstance();
-            if(driver.setProfile(userName,password)){
-                request.getRequestDispatcher("/LogIn.jsp").forward(request, response);
-                log.log(Level.FINEST,"new profile is created");
-            }else{
-                request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
-                log.log(Level.SEVERE,"ERROR system failed to add new profile, possible cause: profile name was already in use");
-                //todo log that failed to create new profile systems fault
-            }
+        if(isValidRequest(userName, password, password_verification, radio)){
+            doRequest(request, response, userName, password);
         }else{
             request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
             log.log(Level.INFO,"profile was NOT created due to incorrect username/password/verification-password");
         }
         out.flush();
+    }
+
+    private void doRequest(HttpServletRequest request, HttpServletResponse response, String userName, String password) throws ServletException, IOException {
+        Driver driver = Driver.getInstance();
+        if(driver.setProfile(userName,password)){
+            request.getRequestDispatcher("/LogIn.jsp").forward(request, response);
+            log.log(Level.FINEST,"new profile is created");
+        }else{
+            request.getRequestDispatcher("/SignUp.jsp").forward(request, response);
+            log.log(Level.SEVERE,"ERROR system failed to add new profile, possible cause: profile name was already in use");
+            //todo log that failed to create new profile systems fault
+        }
+    }
+
+    private boolean isValidRequest(String userName, String password, String password_verification, String radio) {
+        return "agreed".equals(radio) && password.equals(password_verification) && !userName.equals("") && !password.equals("");
     }
 }

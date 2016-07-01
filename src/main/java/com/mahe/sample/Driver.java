@@ -40,17 +40,22 @@ public class Driver {
     public String getPassword(String username) {
         try{
             Statement myStatement = myConn.createStatement();
+            //username = '; DROP TABLE data..
+
+            //Query query = "select * from database_login.login_details where username = :username";
+            //query.setParameter("username", username);
+
             ResultSet myRs = myStatement.executeQuery("SELECT * FROM database_login.login_details WHERE username" + " = '" + username +"';");
             if(myRs.next()){
                 log.log(Level.FINE,"Password for username:"+username+"has been returned");
                 return myRs.getString("password");
             }else{
-                log.log(Level.INFO,"SQL database did not return password, likely cause: unknown");
+                log.log(Level.INFO,"SQL database did not return password, likely cause: profile does not exist");
                 return "";
             }
         } catch (SQLException e){
             e.printStackTrace();
-            log.log(Level.INFO,"Password can't be found, likely cause: Profile with username " + username + " doesn't exist");
+            log.log(Level.SEVERE,"Password can't be found, likely cause: Profile with username " + username + " doesn't exist, database refuses to give password");
             return "";
         }
     }

@@ -1,5 +1,3 @@
-package Tests;
-
 import com.mahe.sample.Driver;
 import com.mahe.sample.ServletLogIn;
 import com.mahe.sample.ServletSignUp;
@@ -11,9 +9,6 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
-
-
-
 
 
 /**
@@ -38,8 +33,8 @@ public class ServletTest extends TestCase{
         String username = "scotty";
         String password = "doesnt know";
         request.addParameter("userName-SignUp", username);
-        request.addParameter("psw-SignUp", password);
-        request.addParameter("psw-SignUp-verification", password);
+        request.addParameter("password-SignUp", password);
+        request.addParameter("password-SignUp-verification", password);
         request.addParameter("radio", "agreed");
         servletSignUp.doPost(request, response);
         boolean profileFound = Driver.getInstance().findProfile(username,password);
@@ -52,7 +47,7 @@ public class ServletTest extends TestCase{
         String password = "fish";
         String username = "john";
         request.addParameter("userName",username);
-        request.addParameter("psw",password);
+        request.addParameter("password",password);
         Driver.getInstance().setProfile(username,password);
         servletLogIn.doPost(request,response);
         assertTrue((boolean)request.getAttribute("login_success"));

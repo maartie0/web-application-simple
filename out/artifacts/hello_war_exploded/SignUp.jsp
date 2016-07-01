@@ -20,9 +20,9 @@
         User name:
         <input name="userName-SignUp"><br>
         Password:
-        <input type="password" name="psw-SignUp"><br>
+        <input type="password" name="password-SignUp"><br>
         Verify Password:
-        <input type="password" name="psw-SignUp-verification"><br>
+        <input type="password" name="password-SignUp-verification"><br>
         <input type="radio" name="radio" value="agreed"> agreed<br>
         <input type="radio" name="radio" value="disagreed"> disagreed<br>
         <input type="submit" name="submit-SignUp">

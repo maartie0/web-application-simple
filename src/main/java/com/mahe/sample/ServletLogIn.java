@@ -20,8 +20,8 @@ public class ServletLogIn extends javax.servlet.http.HttpServlet {
   //      response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String userName = request.getParameter("userName");
-        String password = request.getParameter("psw");
-        if(password.equals(driver.getPassword(userName)) && !userName.equals("") && !password.equals("")){
+        String password = request.getParameter("password");
+        if(password.equals(driver.getPassword(userName)) && !"".equals(userName) && !password.equals("")){
             log.log(Level.FINEST,"login was successful");
             request.setAttribute("login_success",true);
             request.getRequestDispatcher("/Home.jsp").forward(request, response);

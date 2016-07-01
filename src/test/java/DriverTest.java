@@ -1,9 +1,5 @@
-package Tests;
-
 import com.mahe.sample.Driver;
-import com.mahe.sample.ServletRedirectToSignUp;
 import junit.framework.TestCase;
-import org.junit.Test;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
@@ -26,7 +22,7 @@ public class DriverTest extends TestCase {
         driver.deleteProfile(username,password);
     }
 
-    public void testDelete(){
+    public void testDeleteUser(){
         String username = "pete";
         String password = "platypus";
         Driver driver = Driver.getInstance();

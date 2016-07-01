@@ -12,7 +12,7 @@
                 User name:
                 <input name="userName"><br>
                 Password:
-                <input type="password" name="psw"><br>
+                <input type="password" name="password"><br>
                 <input type="submit" name="submit">
             </div>
         </form>
