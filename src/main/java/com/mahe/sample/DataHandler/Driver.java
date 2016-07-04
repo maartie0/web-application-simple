@@ -1,8 +1,9 @@
-package com.mahe.sample;
+package com.mahe.sample.DataHandler;
+
+import com.mahe.sample.ServletLogIn;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -40,11 +41,6 @@ public class Driver {
     public String getPassword(String username) {
         try{
             Statement myStatement = myConn.createStatement();
-            //username = '; DROP TABLE data..
-
-            //Query query = "select * from database_login.login_details where username = :username";
-            //query.setParameter("username", username);
-
             ResultSet myRs = myStatement.executeQuery("SELECT * FROM database_login.login_details WHERE username" + " = '" + username +"';");
             if(myRs.next()){
                 log.log(Level.FINE,"Password for username:"+username+"has been returned");
