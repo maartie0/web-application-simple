@@ -1,4 +1,4 @@
-import com.mahe.sample.DataHandler.Driver;
+import com.mahe.sample.model.Driver;
 import com.mahe.sample.ServletLogIn;
 import com.mahe.sample.ServletSignUp;
 import junit.framework.TestCase;

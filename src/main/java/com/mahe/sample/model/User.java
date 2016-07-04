@@ -1,4 +1,4 @@
-package com.mahe.sample.DataHandler;
+package com.mahe.sample.model;
 
 /**
  * Created by maha on 04/07/16.
@@ -14,8 +14,7 @@ public class User {
 
     private String name;
     private String password;
-    @ManyToOne
-    private Department department;
+
 
     public String getPassword() {
         return password;
@@ -27,10 +26,9 @@ public class User {
 
     public User() {}
 
-    public User(String name,String password, Department department) {
+    public User(String name,String password) {
         this.name = name;
         this.password = password;
-        this.department = department;
     }
 
 
@@ -54,18 +52,13 @@ public class User {
         this.name = name;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
     @Override
     public String toString() {
-        return "User [id=" + id + ", name=" + name + ", department="
-                + department.getName() + "]";
+        return "User [id=" + id + ", name=" + name  + ", password=" + password + "]";
+    }
+
+    public boolean equals(String username,String password) {
+        return (this.name.equals(username) && this.password.equals(password));
     }
 
 }

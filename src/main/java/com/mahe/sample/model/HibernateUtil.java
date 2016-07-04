@@ -1,4 +1,4 @@
-package com.mahe.sample.DataHandler;
+package com.mahe.sample.model;
 
 /**
  * Created by maha on 04/07/16.
@@ -11,7 +11,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class HibernateUtil {
 
 
-    private static SessionFactory sessionFactory;
+
+    private static SessionFactory sessionFactory = buildSessionFactory();
     private static ServiceRegistry serviceRegistry;
 
     private static SessionFactory buildSessionFactory() {
@@ -24,7 +25,7 @@ public class HibernateUtil {
     }
 
     public static SessionFactory getSessionFactory() {
-        return buildSessionFactory();
+        return sessionFactory;
     }
 
     public static void shutdown() {

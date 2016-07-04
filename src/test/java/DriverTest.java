@@ -1,4 +1,4 @@
-import com.mahe.sample.DataHandler.Driver;
+import com.mahe.sample.model.Driver;
 import junit.framework.TestCase;
 
 import javax.servlet.ServletException;

@@ -1,6 +1,6 @@
 package com.mahe.sample;
 
-import com.mahe.sample.DataHandler.Driver;
+import com.mahe.sample.model.Driver;
 
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;

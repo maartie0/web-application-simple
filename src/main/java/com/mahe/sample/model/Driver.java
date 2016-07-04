@@ -1,4 +1,4 @@
-package com.mahe.sample.DataHandler;
+package com.mahe.sample.model;
 
 import com.mahe.sample.ServletLogIn;
 
